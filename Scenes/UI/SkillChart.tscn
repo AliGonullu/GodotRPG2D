@@ -1,0 +1,281 @@
+[gd_scene load_steps=5 format=3 uid="uid://bkvj11tv2jrgo"]
+
+[ext_resource type="Texture2D" uid="uid://dehit8cg42ewn" path="res://Sprites/UI/Chart.png" id="1_gut0f"]
+[ext_resource type="Script" path="res://Scripts/Skill_Chart.gd" id="1_yhdve"]
+[ext_resource type="FontFile" uid="uid://djf10bn7tk2u4" path="res://Fonts/JollyLodger-Regular.ttf" id="3_77vbb"]
+
+[sub_resource type="FontVariation" id="FontVariation_1upt0"]
+base_font = ExtResource("3_77vbb")
+spacing_glyph = 3
+
+[node name="SkillChart" type="Node2D"]
+script = ExtResource("1_yhdve")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -1.52588e-05)
+scale = Vector2(16, 16)
+texture = ExtResource("1_gut0f")
+
+[node name="VIG" type="Node2D" parent="."]
+position = Vector2(-112, -96)
+scale = Vector2(0.8, 0.8)
+
+[node name="VIGLabel" type="Label" parent="VIG"]
+offset_left = -298.0
+offset_top = -36.0
+offset_right = -19.0
+offset_bottom = 34.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 8
+theme_override_constants/shadow_outline_size = 8
+theme_override_fonts/font = SubResource("FontVariation_1upt0")
+theme_override_font_sizes/font_size = 42
+text = "Vigor : 0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="VIGReqLabel" type="Label" parent="VIG"]
+offset_left = 110.0
+offset_top = -37.5
+offset_right = 389.0
+offset_bottom = 32.5
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 8
+theme_override_constants/shadow_outline_size = 8
+theme_override_fonts/font = SubResource("FontVariation_1upt0")
+theme_override_font_sizes/font_size = 42
+text = "Skill Cost : 1"
+vertical_alignment = 1
+
+[node name="VIG_INC" type="Button" parent="VIG"]
+offset_left = 30.0
+offset_top = -30.0
+offset_right = 73.0
+offset_bottom = 28.0
+theme_override_font_sizes/font_size = 36
+text = "+"
+
+[node name="STR" type="Node2D" parent="."]
+position = Vector2(-112, -32)
+scale = Vector2(0.8, 0.8)
+
+[node name="STRLabel" type="Label" parent="STR"]
+offset_left = -298.0
+offset_top = -36.0
+offset_right = -19.0
+offset_bottom = 34.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 8
+theme_override_constants/shadow_outline_size = 8
+theme_override_fonts/font = SubResource("FontVariation_1upt0")
+theme_override_font_sizes/font_size = 42
+text = "Strength : 0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="STR_INC" type="Button" parent="STR"]
+offset_left = 30.0
+offset_top = -30.0
+offset_right = 73.0
+offset_bottom = 28.0
+theme_override_font_sizes/font_size = 36
+text = "+"
+
+[node name="STRReqLabel" type="Label" parent="STR"]
+offset_left = 110.0
+offset_top = -37.5
+offset_right = 389.0
+offset_bottom = 32.5
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 8
+theme_override_constants/shadow_outline_size = 8
+theme_override_fonts/font = SubResource("FontVariation_1upt0")
+theme_override_font_sizes/font_size = 42
+text = "Skill Cost : 1"
+vertical_alignment = 1
+
+[node name="DEX" type="Node2D" parent="."]
+position = Vector2(-112, 32)
+scale = Vector2(0.8, 0.8)
+
+[node name="DEXLabel" type="Label" parent="DEX"]
+offset_left = -298.0
+offset_top = -36.0
+offset_right = -19.0
+offset_bottom = 34.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 8
+theme_override_constants/shadow_outline_size = 8
+theme_override_fonts/font = SubResource("FontVariation_1upt0")
+theme_override_font_sizes/font_size = 42
+text = "Dexterity : 0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="DEX_INC" type="Button" parent="DEX"]
+offset_left = 30.0
+offset_top = -30.0
+offset_right = 73.0
+offset_bottom = 28.0
+theme_override_font_sizes/font_size = 36
+text = "+"
+
+[node name="DEXReqLabel" type="Label" parent="DEX"]
+offset_left = 110.0
+offset_top = -37.5
+offset_right = 389.0
+offset_bottom = 32.5
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 8
+theme_override_constants/shadow_outline_size = 8
+theme_override_fonts/font = SubResource("FontVariation_1upt0")
+theme_override_font_sizes/font_size = 42
+text = "Skill Cost : 1"
+vertical_alignment = 1
+
+[node name="MANA" type="Node2D" parent="."]
+position = Vector2(-112, 96)
+scale = Vector2(0.8, 0.8)
+
+[node name="MANALabel" type="Label" parent="MANA"]
+offset_left = -298.0
+offset_top = -36.0
+offset_right = -19.0
+offset_bottom = 34.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 8
+theme_override_constants/shadow_outline_size = 8
+theme_override_fonts/font = SubResource("FontVariation_1upt0")
+theme_override_font_sizes/font_size = 42
+text = "Mana : 0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="MANA_INC" type="Button" parent="MANA"]
+offset_left = 30.0
+offset_top = -30.0
+offset_right = 73.0
+offset_bottom = 28.0
+theme_override_font_sizes/font_size = 36
+text = "+"
+
+[node name="MANAReqLabel" type="Label" parent="MANA"]
+offset_left = 110.0
+offset_top = -37.5
+offset_right = 389.0
+offset_bottom = 32.5
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 8
+theme_override_constants/shadow_outline_size = 8
+theme_override_fonts/font = SubResource("FontVariation_1upt0")
+theme_override_font_sizes/font_size = 42
+text = "Skill Cost : 1"
+vertical_alignment = 1
+
+[node name="ENG" type="Node2D" parent="."]
+position = Vector2(-112, 160)
+scale = Vector2(0.8, 0.8)
+
+[node name="ENGLabel" type="Label" parent="ENG"]
+offset_left = -298.0
+offset_top = -36.0
+offset_right = -19.0
+offset_bottom = 34.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 8
+theme_override_constants/shadow_outline_size = 8
+theme_override_fonts/font = SubResource("FontVariation_1upt0")
+theme_override_font_sizes/font_size = 42
+text = "Energy : 0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ENG_INC" type="Button" parent="ENG"]
+offset_left = 30.0
+offset_top = -30.0
+offset_right = 73.0
+offset_bottom = 28.0
+theme_override_font_sizes/font_size = 36
+text = "+"
+
+[node name="ENGReqLabel" type="Label" parent="ENG"]
+offset_left = 110.0
+offset_top = -37.5001
+offset_right = 389.0
+offset_bottom = 32.4999
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 8
+theme_override_constants/shadow_outline_size = 8
+theme_override_fonts/font = SubResource("FontVariation_1upt0")
+theme_override_font_sizes/font_size = 42
+text = "Skill Cost : 1"
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+autostart = true
+
+[node name="SkillPointLabel" type="Label" parent="."]
+offset_left = -288.0
+offset_top = -232.0
+offset_right = -9.0
+offset_bottom = -150.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 8
+theme_override_constants/shadow_outline_size = 8
+theme_override_fonts/font = SubResource("FontVariation_1upt0")
+theme_override_font_sizes/font_size = 56
+text = "Skill Points : 0"
+vertical_alignment = 1
+
+[connection signal="button_up" from="VIG/VIG_INC" to="." method="_on_vig_inc_button_up"]
+[connection signal="button_up" from="STR/STR_INC" to="." method="_on_str_inc_button_up"]
+[connection signal="button_up" from="DEX/DEX_INC" to="." method="_on_dex_inc_button_up"]
+[connection signal="button_up" from="MANA/MANA_INC" to="." method="_on_mana_inc_button_up"]
+[connection signal="button_up" from="ENG/ENG_INC" to="." method="_on_eng_inc_button_up"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://codtsupwwbny8"]
+
+[ext_resource type="Script" path="res://Scripts/VisibleOnScreen.gd" id="1_pugmp"]
+
+[node name="VisibleOnScreen" type="VisibleOnScreenNotifier2D"]
+position = Vector2(0, -6.92308)
+script = ExtResource("1_pugmp")
+
+[connection signal="screen_entered" from="." to="." method="_on_screen_entered"]
+[connection signal="screen_exited" from="." to="." method="_on_screen_exited"]

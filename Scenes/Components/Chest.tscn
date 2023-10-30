@@ -1,0 +1,145 @@
+[gd_scene load_steps=11 format=3 uid="uid://qko4rhyplot"]
+
+[ext_resource type="Texture2D" uid="uid://bpcl2q1nrkcym" path="res://Sprites/Items/chestsAll.png" id="1_5a1jh"]
+[ext_resource type="Script" path="res://Scripts/Chest.gd" id="1_6t5ll"]
+[ext_resource type="PackedScene" uid="uid://dvgpaqeiq6i78" path="res://Scenes/Tile.tscn" id="3_xb54r"]
+[ext_resource type="PackedScene" uid="uid://c3m2bq51vpo0y" path="res://Scenes/Detections/PlayerDetector.tscn" id="4_wy6th"]
+[ext_resource type="Texture2D" uid="uid://nvoa6aqcmcyf" path="res://Sprites/UI/InnerChest.png" id="5_r5trx"]
+[ext_resource type="Texture2D" uid="uid://bchfvghqb2rxe" path="res://Sprites/Icons/Bone.png" id="5_sdqsp"]
+[ext_resource type="Texture2D" uid="uid://7y3y5jdm7x0p" path="res://Sprites/UI/BlackScreen.png" id="6_q6byf"]
+[ext_resource type="PackedScene" uid="uid://codtsupwwbny8" path="res://Scenes/VisibleOnScreen.tscn" id="8_jbbeh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ttnrc"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tnnwr"]
+radius = 38.4
+
+[node name="Chest" type="Node2D"]
+process_mode = 3
+z_index = -5
+scale = Vector2(5.2, 5.2)
+script = ExtResource("1_6t5ll")
+
+[node name="Button" type="Button" parent="."]
+offset_left = -8.07692
+offset_top = -14.0385
+offset_right = 7.92308
+offset_bottom = -0.0384626
+theme_override_styles/focus = SubResource("StyleBoxFlat_ttnrc")
+flat = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -7.96154)
+texture = ExtResource("1_5a1jh")
+hframes = 3
+vframes = 4
+
+[node name="PlayerDetector" parent="." instance=ExtResource("4_wy6th")]
+position = Vector2(0, -6.36154)
+
+[node name="StandartDetector" parent="PlayerDetector" index="0"]
+shape = SubResource("CircleShape2D_tnnwr")
+
+[node name="ContentCanvas" type="CanvasLayer" parent="."]
+
+[node name="Content" type="Node2D" parent="ContentCanvas"]
+z_index = 300
+position = Vector2(640, 200)
+scale = Vector2(1.1, 1.1)
+
+[node name="Tiles" type="Node2D" parent="ContentCanvas/Content"]
+modulate = Color(0.862745, 0.752941, 0.796078, 1)
+z_index = 300
+scale = Vector2(1.04, 1.04)
+
+[node name="Tile" parent="ContentCanvas/Content/Tiles" instance=ExtResource("3_xb54r")]
+position = Vector2(-108.654, -35.5769)
+
+[node name="Tile2" parent="ContentCanvas/Content/Tiles" instance=ExtResource("3_xb54r")]
+position = Vector2(-36.6538, -35.5769)
+
+[node name="Tile3" parent="ContentCanvas/Content/Tiles" instance=ExtResource("3_xb54r")]
+position = Vector2(34.965, -34.965)
+
+[node name="Tile4" parent="ContentCanvas/Content/Tiles" instance=ExtResource("3_xb54r")]
+position = Vector2(107.518, -35.8391)
+
+[node name="Tile5" parent="ContentCanvas/Content/Tiles" instance=ExtResource("3_xb54r")]
+position = Vector2(-108.392, 34.9651)
+
+[node name="Tile6" parent="ContentCanvas/Content/Tiles" instance=ExtResource("3_xb54r")]
+position = Vector2(-36.7133, 34.965)
+
+[node name="Tile7" parent="ContentCanvas/Content/Tiles" instance=ExtResource("3_xb54r")]
+position = Vector2(35.6538, 35.5)
+
+[node name="Tile8" parent="ContentCanvas/Content/Tiles" instance=ExtResource("3_xb54r")]
+position = Vector2(107.654, 35.5)
+
+[node name="InnerChest" type="Sprite2D" parent="ContentCanvas/Content"]
+position = Vector2(-2.00006, -13)
+scale = Vector2(9, 8)
+texture = ExtResource("5_r5trx")
+
+[node name="BoneChest" type="Node2D" parent="ContentCanvas/Content"]
+scale = Vector2(4.54545, 4.54545)
+
+[node name="BG" type="Sprite2D" parent="ContentCanvas/Content/BoneChest"]
+position = Vector2(-0.299991, 0.299999)
+scale = Vector2(1.13947, 0.895833)
+texture = ExtResource("6_q6byf")
+
+[node name="Bone" type="Sprite2D" parent="ContentCanvas/Content/BoneChest"]
+position = Vector2(-43, -0.200005)
+rotation = -0.684169
+texture = ExtResource("5_sdqsp")
+
+[node name="Bone2" type="Sprite2D" parent="ContentCanvas/Content/BoneChest"]
+position = Vector2(-28.4, 19.8)
+rotation = -2.13279
+scale = Vector2(1.1, 1)
+texture = ExtResource("5_sdqsp")
+
+[node name="Bone3" type="Sprite2D" parent="ContentCanvas/Content/BoneChest"]
+position = Vector2(2.59998, 21)
+rotation = -2.13279
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("5_sdqsp")
+
+[node name="Bone4" type="Sprite2D" parent="ContentCanvas/Content/BoneChest"]
+position = Vector2(30.4, 21.2)
+rotation = -2.25968
+scale = Vector2(0.9, 0.8)
+texture = ExtResource("5_sdqsp")
+
+[node name="Bone5" type="Sprite2D" parent="ContentCanvas/Content/BoneChest"]
+position = Vector2(42.2, -0.600006)
+rotation = 2.53771
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("5_sdqsp")
+
+[node name="Bone6" type="Sprite2D" parent="ContentCanvas/Content/BoneChest"]
+position = Vector2(-28.4039, -19.6039)
+rotation = 0.928515
+texture = ExtResource("5_sdqsp")
+
+[node name="Bone7" type="Sprite2D" parent="ContentCanvas/Content/BoneChest"]
+position = Vector2(2.60001, -21)
+rotation = 0.970829
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("5_sdqsp")
+
+[node name="Bone8" type="Sprite2D" parent="ContentCanvas/Content/BoneChest"]
+position = Vector2(30, -20.8)
+rotation = 0.928515
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("5_sdqsp")
+
+[node name="VisibleOnScreen" parent="." instance=ExtResource("8_jbbeh")]
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
+[connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
+[connection signal="body_exited" from="PlayerDetector" to="." method="_on_player_detector_body_exited"]
+
+[editable path="PlayerDetector"]

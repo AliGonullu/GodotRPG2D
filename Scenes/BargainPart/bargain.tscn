@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwvdm202bxgmb"]
+
+[ext_resource type="Script" path="res://Scripts/Bargain.gd" id="1_fxqtc"]
+
+[node name="Bargain" type="Node2D"]
+script = ExtResource("1_fxqtc")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CardsPos" type="Node2D" parent="CanvasLayer"]
+position = Vector2(641, 580)

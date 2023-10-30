@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://dkaggs8iru66m"]
+
+[node name="SceneChanger" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]

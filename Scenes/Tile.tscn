@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=3 uid="uid://dvgpaqeiq6i78"]
+
+[ext_resource type="Script" path="res://Scripts/Tile.gd" id="1_46es6"]
+[ext_resource type="Texture2D" uid="uid://c8ywij5gwmiol" path="res://Sprites/UI/InventoryTile.png" id="2_krce7"]
+[ext_resource type="FontFile" uid="uid://djf10bn7tk2u4" path="res://Fonts/JollyLodger-Regular.ttf" id="3_t43i5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sluk0"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="FontVariation" id="FontVariation_ugwna"]
+base_font = ExtResource("3_t43i5")
+spacing_glyph = 3
+
+[node name="Tile" type="Node2D"]
+light_mask = 2
+visibility_layer = 2
+z_index = 300
+script = ExtResource("1_46es6")
+
+[node name="Button" type="Button" parent="."]
+light_mask = 2
+visibility_layer = 2
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/focus = SubResource("StyleBoxFlat_sluk0")
+icon = ExtResource("2_krce7")
+flat = true
+expand_icon = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+light_mask = 2
+visibility_layer = 2
+position = Vector2(-7.15256e-07, -1.19209e-07)
+scale = Vector2(1.8125, 1.8125)
+
+[node name="Label" type="Label" parent="."]
+offset_left = -7.0
+offset_right = 33.0
+offset_bottom = 48.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 8
+theme_override_fonts/font = SubResource("FontVariation_ugwna")
+theme_override_font_sizes/font_size = 32
+text = "10"
+horizontal_alignment = 2
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]

@@ -1,0 +1,125 @@
+[gd_scene load_steps=15 format=3 uid="uid://dcygbk8ybd1bu"]
+
+[ext_resource type="Texture2D" uid="uid://5nb4wqjfk2bj" path="res://Sprites/Effect/Air/DASH_SMOKE 2.png" id="1_hjt2r"]
+[ext_resource type="Script" path="res://Scripts/AirPulse.gd" id="1_kf78t"]
+[ext_resource type="PackedScene" uid="uid://d4amfsyj0g050" path="res://Scenes/Detections/Hitbox.tscn" id="3_c6hy4"]
+[ext_resource type="PackedScene" uid="uid://codtsupwwbny8" path="res://Scenes/VisibleOnScreen.tscn" id="4_svevy"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mruik"]
+radius = 16.6667
+height = 58.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nkn6o"]
+atlas = ExtResource("1_hjt2r")
+region = Rect2(0, 0, 59, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_asssf"]
+atlas = ExtResource("1_hjt2r")
+region = Rect2(59, 0, 59, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8c8fv"]
+atlas = ExtResource("1_hjt2r")
+region = Rect2(118, 0, 59, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7taek"]
+atlas = ExtResource("1_hjt2r")
+region = Rect2(177, 0, 59, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pa44b"]
+atlas = ExtResource("1_hjt2r")
+region = Rect2(236, 0, 59, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqg0p"]
+atlas = ExtResource("1_hjt2r")
+region = Rect2(295, 0, 59, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s4jns"]
+atlas = ExtResource("1_hjt2r")
+region = Rect2(354, 0, 59, 42)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_17ubt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nkn6o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_asssf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8c8fv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7taek")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pa44b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aqg0p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s4jns")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3xr3u"]
+radius = 16.6667
+height = 58.0
+
+[node name="AirPulse" type="CharacterBody2D"]
+scale = Vector2(2.2, 0.9)
+collision_layer = 128
+collision_mask = 0
+script = ExtResource("1_kf78t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(6, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_mruik")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(2, -21)
+sprite_frames = SubResource("SpriteFrames_17ubt")
+frame = 2
+frame_progress = 0.917373
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+position = Vector2(2, 21)
+sprite_frames = SubResource("SpriteFrames_17ubt")
+frame = 2
+frame_progress = 0.917373
+flip_v = true
+
+[node name="Hitbox" parent="." instance=ExtResource("3_c6hy4")]
+collision_layer = 136
+collision_mask = 4098
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2(6, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_3xr3u")
+
+[node name="VisibleOnScreen" parent="." instance=ExtResource("4_svevy")]
+position = Vector2(0.227275, 7.62939e-06)
+scale = Vector2(3.43182, 5.11111)
+
+[node name="Timers" type="Node2D" parent="."]
+
+[node name="Timer" type="Timer" parent="Timers"]
+wait_time = 1.5
+one_shot = true
+
+[node name="LatencyTimer" type="Timer" parent="Timers"]
+wait_time = 0.1
+one_shot = true
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="timeout" from="Timers/Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timers/LatencyTimer" to="." method="_on_latency_timer_timeout"]
+
+[editable path="Hitbox"]

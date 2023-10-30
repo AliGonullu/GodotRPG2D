@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=3 uid="uid://b521pmc4y7ke0"]
+
+[ext_resource type="Script" path="res://Scripts/StoneWall.gd" id="1_5cvgb"]
+[ext_resource type="Script" path="res://Scripts/CastControl.gd" id="2_86mgq"]
+[ext_resource type="PackedScene" uid="uid://d4amfsyj0g050" path="res://Scenes/Detections/Hitbox.tscn" id="3_txjnc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tj16p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4gk74"]
+size = Vector2(148, 32)
+
+[node name="StoneWall" type="CharacterBody2D" groups=["EarthSpell"]]
+collision_layer = 38
+collision_mask = 293
+motion_mode = 1
+slide_on_ceiling = false
+floor_snap_length = 32.0
+script = ExtResource("1_5cvgb")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -80.0
+offset_top = -20.0
+offset_right = 80.0
+offset_bottom = 20.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(8, 2)
+shape = SubResource("RectangleShape2D_tj16p")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CastControl" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 271
+script = ExtResource("2_86mgq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CastControl"]
+shape = SubResource("RectangleShape2D_4gk74")
+
+[node name="Hitbox" parent="." instance=ExtResource("3_txjnc")]
+collision_layer = 512
+collision_mask = 4096
+
+[node name="Timers" type="Node2D" parent="."]
+
+[node name="Timer" type="Timer" parent="Timers"]
+wait_time = 5.0
+one_shot = true
+
+[node name="LatencyTimer" type="Timer" parent="Timers"]
+wait_time = 0.1
+one_shot = true
+
+[connection signal="body_entered" from="CastControl" to="CastControl" method="_on_body_entered"]
+[connection signal="body_exited" from="CastControl" to="CastControl" method="_on_body_exited"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="timeout" from="Timers/Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timers/LatencyTimer" to="." method="_on_latency_timer_timeout"]

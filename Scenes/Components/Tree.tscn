@@ -1,0 +1,312 @@
+[gd_scene load_steps=17 format=3 uid="uid://doh0hyw3bgim"]
+
+[ext_resource type="Script" path="res://Scripts/Tree.gd" id="1_a6s8p"]
+[ext_resource type="Shader" path="res://Shaders/tree.gdshader" id="2_737g4"]
+[ext_resource type="Texture2D" uid="uid://clskp3btttck8" path="res://Sprites/Background/WinterTress.png" id="2_nae75"]
+[ext_resource type="PackedScene" uid="uid://d2cnyuhoemlh2" path="res://Scenes/Detections/Hurtbox.tscn" id="3_nfxnd"]
+[ext_resource type="PackedScene" uid="uid://2tgtnmtymfe4" path="res://Scenes/Effects/CharacterBurnEffect.tscn" id="4_fa2hp"]
+[ext_resource type="PackedScene" uid="uid://c3m2bq51vpo0y" path="res://Scenes/Detections/PlayerDetector.tscn" id="5_8eksi"]
+[ext_resource type="PackedScene" uid="uid://codtsupwwbny8" path="res://Scenes/VisibleOnScreen.tscn" id="7_ysko7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uav2t"]
+shader = ExtResource("2_737g4")
+shader_parameter/saturation = 1.15
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cwwe0"]
+size = Vector2(16, 70)
+
+[sub_resource type="Animation" id="Animation_kj1od"]
+resource_name = "Fall"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.5708]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"FallAnimEnd"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimationPlayer:speed_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.15, 0.4, 2.2]
+}
+
+[sub_resource type="Animation" id="Animation_ncn47"]
+resource_name = "Hit"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer:speed_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-1, -64), Vector2(2, -64), Vector2(-2, -64), Vector2(1, -64), Vector2(0, -64), Vector2(-1, -64)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Effects:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -20.833), Vector2(2, -20.833), Vector2(-2, -20.833), Vector2(1, -20.833), Vector2(-1, -20.833), Vector2(0, -20.833)]
+}
+
+[sub_resource type="Animation" id="Animation_vcgda"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer:speed_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, -64)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Effects:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -20.833)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rcbpx"]
+_data = {
+"Fall": SubResource("Animation_kj1od"),
+"Hit": SubResource("Animation_ncn47"),
+"RESET": SubResource("Animation_vcgda")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jqait"]
+size = Vector2(20, 53.6364)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_52i20"]
+size = Vector2(20, 53.6364)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_emgnu"]
+size = Vector2(28, 71)
+
+[node name="Tree" type="Node2D"]
+script = ExtResource("1_a6s8p")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_uav2t")
+position = Vector2(-1, -64)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_nae75")
+hframes = 4
+
+[node name="Hurtbox" parent="." instance=ExtResource("3_nfxnd")]
+visible = false
+collision_layer = 8
+collision_mask = 74384
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+position = Vector2(0, -35)
+shape = SubResource("RectangleShape2D_cwwe0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rcbpx")
+}
+
+[node name="Timers" type="Node2D" parent="."]
+
+[node name="BurnTimer" type="Timer" parent="Timers"]
+wait_time = 5.0
+one_shot = true
+
+[node name="StartBurningTimer" type="Timer" parent="Timers"]
+wait_time = 1.5
+one_shot = true
+
+[node name="Effects" type="Node2D" parent="."]
+visible = false
+position = Vector2(0, -20.833)
+scale = Vector2(1.1, 1.1)
+
+[node name="CharacterBurnEffect" parent="Effects" instance=ExtResource("4_fa2hp")]
+z_index = -1
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(0, 1.14441e-05)
+scale = Vector2(1.1, 1.1)
+
+[node name="AnimatedSprite2D" parent="Effects/CharacterBurnEffect/Sprites" index="0"]
+z_index = 2
+position = Vector2(0, 3.48454)
+scale = Vector2(0.5, 0.5)
+
+[node name="AnimatedSprite2D2" parent="Effects/CharacterBurnEffect/Sprites" index="1"]
+z_index = 2
+position = Vector2(-1.81818, -13.7882)
+scale = Vector2(0.5, 0.5)
+
+[node name="AnimatedSprite2D3" parent="Effects/CharacterBurnEffect/Sprites" index="2"]
+z_index = 2
+position = Vector2(-2.72727, -41.0609)
+scale = Vector2(0.5, 0.5)
+
+[node name="AnimatedSprite2D4" parent="Effects/CharacterBurnEffect/Sprites" index="3"]
+position = Vector2(-7.27273, -24.6973)
+scale = Vector2(0.5, 0.5)
+
+[node name="AnimatedSprite2D5" parent="Effects/CharacterBurnEffect/Sprites" index="4"]
+z_index = 1
+position = Vector2(1.81818, -23.7882)
+scale = Vector2(0.5, 0.5)
+
+[node name="Hitbox" parent="Effects/CharacterBurnEffect" index="3" groups=["Fire"]]
+
+[node name="CollisionShape2D" parent="Effects/CharacterBurnEffect/Hitbox" index="0"]
+position = Vector2(0, -17.8791)
+shape = SubResource("RectangleShape2D_jqait")
+
+[node name="CharacterBurnEffect2" parent="Effects" instance=ExtResource("4_fa2hp")]
+z_index = -1
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(0, 1.90735e-06)
+scale = Vector2(1.1, 1.1)
+
+[node name="AnimatedSprite2D" parent="Effects/CharacterBurnEffect2/Sprites" index="0"]
+z_index = 2
+position = Vector2(0, -33.7882)
+scale = Vector2(0.5, 0.5)
+
+[node name="AnimatedSprite2D2" parent="Effects/CharacterBurnEffect2/Sprites" index="1"]
+z_index = 2
+position = Vector2(2.72727, -11.97)
+scale = Vector2(0.5, 0.5)
+
+[node name="AnimatedSprite2D3" parent="Effects/CharacterBurnEffect2/Sprites" index="2"]
+z_index = 2
+position = Vector2(-3.63636, -2.87909)
+scale = Vector2(0.5, 0.5)
+
+[node name="AnimatedSprite2D4" parent="Effects/CharacterBurnEffect2/Sprites" index="3"]
+position = Vector2(4.54545, -21.97)
+scale = Vector2(0.5, 0.5)
+
+[node name="AnimatedSprite2D5" parent="Effects/CharacterBurnEffect2/Sprites" index="4"]
+z_index = 1
+position = Vector2(-4.54545, -19.2427)
+scale = Vector2(0.5, 0.5)
+
+[node name="CollisionShape2D" parent="Effects/CharacterBurnEffect2/Hitbox" index="0"]
+position = Vector2(0, -19.6973)
+shape = SubResource("RectangleShape2D_52i20")
+
+[node name="TreeDetector" parent="." instance=ExtResource("5_8eksi")]
+visible = false
+collision_layer = 131072
+collision_mask = 131072
+
+[node name="StandartDetector" parent="TreeDetector" index="0"]
+position = Vector2(0, -35.5)
+shape = SubResource("RectangleShape2D_emgnu")
+
+[node name="VisibleOnScreen" parent="." instance=ExtResource("7_ysko7")]
+position = Vector2(4.76837e-07, -36.4615)
+scale = Vector2(2.1, 3.95385)
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="timeout" from="Timers/BurnTimer" to="." method="_on_burn_timer_timeout"]
+[connection signal="timeout" from="Timers/StartBurningTimer" to="." method="_on_start_burning_timer_timeout"]
+[connection signal="area_entered" from="TreeDetector" to="." method="_on_tree_detector_area_entered"]
+
+[editable path="Hurtbox"]
+[editable path="Effects/CharacterBurnEffect"]
+[editable path="Effects/CharacterBurnEffect/Hitbox"]
+[editable path="Effects/CharacterBurnEffect2"]
+[editable path="Effects/CharacterBurnEffect2/Hitbox"]
+[editable path="TreeDetector"]

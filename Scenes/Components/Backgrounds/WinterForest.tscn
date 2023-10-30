@@ -1,0 +1,345 @@
+[gd_scene load_steps=23 format=3 uid="uid://clfm22l6b4dff"]
+
+[ext_resource type="Texture2D" uid="uid://c5b2sgalr7fut" path="res://Sprites/Background/WinterForest/PNG/1.png" id="1_1ql17"]
+[ext_resource type="Script" path="res://Scripts/DayLoop.gd" id="1_2uffn"]
+[ext_resource type="Shader" path="res://Shaders/winter_forest_bg.gdshader" id="1_uw5hd"]
+[ext_resource type="Texture2D" uid="uid://dop3btfm4odc4" path="res://Sprites/Background/WinterForest/PNG/2.png" id="2_3vr0q"]
+[ext_resource type="Texture2D" uid="uid://cmjic3jrgwq8a" path="res://Sprites/Background/WinterForest/PNG/3.png" id="3_fq5ut"]
+[ext_resource type="Texture2D" uid="uid://bi7f3q5nyckjw" path="res://Sprites/Background/WinterForest/PNG/4.png" id="4_g8n5x"]
+[ext_resource type="Texture2D" uid="uid://b537osujtrn40" path="res://Sprites/Background/Sun.png" id="4_sjskf"]
+[ext_resource type="Texture2D" uid="uid://c1g6c45lrhowd" path="res://Sprites/Background/WinterForest/PNG/5.png" id="5_of5s2"]
+[ext_resource type="Texture2D" uid="uid://c8od1x4a3yd6l" path="res://Sprites/Effect/Light/light.png" id="5_rywvf"]
+[ext_resource type="Texture2D" uid="uid://c0tnla7wmn8f2" path="res://Sprites/Background/WinterForest/PNG/6.png" id="6_5a7mr"]
+[ext_resource type="Texture2D" uid="uid://bbjf3yvqqb4eh" path="res://Sprites/Background/Moon.png" id="6_hykgq"]
+[ext_resource type="Texture2D" uid="uid://bxelbt4k2tgvh" path="res://Sprites/Background/WinterForest/PNG/7.png" id="7_63c0m"]
+[ext_resource type="Texture2D" uid="uid://cm2s5nxnkbo5v" path="res://Sprites/Background/WinterForest/PNG/8.png" id="8_4oxc2"]
+[ext_resource type="Texture2D" uid="uid://c0j3s1k34tf1h" path="res://Sprites/Background/WinterForest/PNG/9.png" id="9_xeww7"]
+[ext_resource type="Texture2D" uid="uid://buo3kvsxbg3ac" path="res://Sprites/Background/WinterForest/PNG/10.png" id="10_6rsk2"]
+[ext_resource type="Texture2D" uid="uid://bfb4yvjapcepn" path="res://Sprites/Background/WinterForest/PNG/11.png" id="11_i0lka"]
+[ext_resource type="Texture2D" uid="uid://dm04qxainbitm" path="res://Sprites/Background/WinterForest/PNG/12.png" id="12_kamko"]
+[ext_resource type="Texture2D" uid="uid://bqido7gcqtyim" path="res://Sprites/Background/WinterForest/PNG/13.png" id="13_qki3m"]
+[ext_resource type="Texture2D" uid="uid://bqeuftmo3205v" path="res://Sprites/Background/WinterForest/PNG/14.png" id="14_ciekl"]
+[ext_resource type="Texture2D" uid="uid://ccv467kg0e53e" path="res://Sprites/Background/WinterForest/PNG/15.png" id="15_201n1"]
+[ext_resource type="Texture2D" uid="uid://cs7cwhcj7yxs4" path="res://Sprites/Background/WinterForest/PNG/16.png" id="16_vu2xg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7pruo"]
+shader = ExtResource("1_uw5hd")
+shader_parameter/saturation = 1.3
+
+[node name="WinterForest" type="ParallaxBackground"]
+script = ExtResource("1_2uffn")
+day_speed = 90.0
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="DirLight" type="DirectionalLight2D" parent="."]
+color = Color(0.113725, 0.294118, 0.835294, 1)
+energy = 0.0
+blend_mode = 1
+range_layer_min = -100
+range_layer_max = 100
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+position = Vector2(0, -104)
+motion_scale = Vector2(0.05, 1)
+motion_mirroring = Vector2(1280, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
+material = SubResource("ShaderMaterial_7pruo")
+position = Vector2(640, 416)
+scale = Vector2(2.5, 2.4375)
+texture = ExtResource("1_1ql17")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxLayer"]
+z_index = -1
+material = SubResource("ShaderMaterial_7pruo")
+position = Vector2(640, -216)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("1_1ql17")
+flip_h = true
+flip_v = true
+
+[node name="Sun" type="Sprite2D" parent="ParallaxLayer"]
+visible = false
+modulate = Color(1, 1, 1, 0.941176)
+texture_filter = 2
+position = Vector2(873, -371)
+scale = Vector2(4, 4)
+texture = ExtResource("4_sjskf")
+
+[node name="PointLight2D" type="PointLight2D" parent="ParallaxLayer/Sun"]
+position = Vector2(1, 2.2)
+scale = Vector2(5, 1.2)
+color = Color(0.823529, 0, 0, 1)
+energy = 0.8
+range_z_min = -1
+range_z_max = 1
+range_layer_min = -100
+range_layer_max = 100
+texture = ExtResource("5_rywvf")
+texture_scale = 0.5
+
+[node name="InnerPointLight" type="PointLight2D" parent="ParallaxLayer/Sun/PointLight2D"]
+scale = Vector2(2, 1.2)
+color = Color(1, 0.376471, 0.309804, 1)
+energy = 0.2
+range_z_min = -1
+range_z_max = 1
+range_layer_min = -100
+range_layer_max = 100
+texture = ExtResource("5_rywvf")
+
+[node name="PointLight2D2" type="PointLight2D" parent="ParallaxLayer/Sun"]
+position = Vector2(321, 2.2)
+scale = Vector2(5, 1.2)
+color = Color(0.823529, 0, 0, 1)
+energy = 0.75
+range_z_min = -1
+range_z_max = 1
+range_layer_min = -100
+range_layer_max = 100
+texture = ExtResource("5_rywvf")
+texture_scale = 0.5
+
+[node name="InnerPointLight" type="PointLight2D" parent="ParallaxLayer/Sun/PointLight2D2"]
+scale = Vector2(2, 1.2)
+color = Color(1, 0.376471, 0.309804, 1)
+energy = 0.2
+range_z_min = -1
+range_z_max = 1
+range_layer_min = -100
+range_layer_max = 100
+texture = ExtResource("5_rywvf")
+
+[node name="Moon" type="Sprite2D" parent="ParallaxLayer"]
+modulate = Color(1, 1, 1, 0.941176)
+texture_filter = 2
+position = Vector2(873, -371)
+scale = Vector2(4, 4)
+texture = ExtResource("6_hykgq")
+
+[node name="PointLight2D" type="PointLight2D" parent="ParallaxLayer/Moon"]
+position = Vector2(1, 2.2)
+scale = Vector2(5, 1.5)
+color = Color(0, 0.380392, 0.380392, 1)
+energy = 0.5
+range_z_min = -1
+range_z_max = 1
+range_layer_min = -100
+range_layer_max = 100
+texture = ExtResource("5_rywvf")
+texture_scale = 0.5
+
+[node name="InnerPointLight" type="PointLight2D" parent="ParallaxLayer/Moon/PointLight2D"]
+scale = Vector2(3, 1.2)
+energy = 0.1
+range_z_min = -1
+range_z_max = 1
+range_layer_min = -100
+range_layer_max = 100
+texture = ExtResource("5_rywvf")
+
+[node name="PointLight2D2" type="PointLight2D" parent="ParallaxLayer/Moon"]
+position = Vector2(321, 2.2)
+scale = Vector2(5, 1.5)
+color = Color(0, 0.380392, 0.380392, 1)
+energy = 0.5
+range_z_min = -1
+range_z_max = 1
+range_layer_min = -100
+range_layer_max = 100
+texture = ExtResource("5_rywvf")
+texture_scale = 0.5
+
+[node name="InnerPointLight" type="PointLight2D" parent="ParallaxLayer/Moon/PointLight2D2"]
+scale = Vector2(3, 1.2)
+energy = 0.1
+range_z_min = -1
+range_z_max = 1
+range_layer_min = -100
+range_layer_max = 100
+texture = ExtResource("5_rywvf")
+
+[node name="ParallaxLayer1" type="ParallaxLayer" parent="."]
+z_index = 2
+position = Vector2(0, -104)
+motion_scale = Vector2(0.1, 1)
+motion_mirroring = Vector2(1280, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer1"]
+material = SubResource("ShaderMaterial_7pruo")
+position = Vector2(640, 362.24)
+scale = Vector2(2.5, 2.83)
+texture = ExtResource("2_3vr0q")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
+z_index = 2
+position = Vector2(0, -104)
+motion_scale = Vector2(0.15, 1)
+motion_mirroring = Vector2(1280, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer2"]
+material = SubResource("ShaderMaterial_7pruo")
+position = Vector2(640, 362.24)
+scale = Vector2(2.5, 2.83)
+texture = ExtResource("3_fq5ut")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="."]
+z_index = 2
+position = Vector2(0, -104)
+motion_scale = Vector2(0.2, 1)
+motion_mirroring = Vector2(1280, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer3"]
+material = SubResource("ShaderMaterial_7pruo")
+position = Vector2(640, 362.24)
+scale = Vector2(2.5, 2.83)
+texture = ExtResource("4_g8n5x")
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="."]
+z_index = 2
+position = Vector2(0, -104)
+motion_scale = Vector2(0.25, 1)
+motion_mirroring = Vector2(1280, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer4"]
+material = SubResource("ShaderMaterial_7pruo")
+position = Vector2(640, 362.24)
+scale = Vector2(2.5, 2.83)
+texture = ExtResource("5_of5s2")
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="."]
+z_index = 2
+position = Vector2(0, -104)
+motion_scale = Vector2(0.3, 1)
+motion_mirroring = Vector2(1280, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer5"]
+material = SubResource("ShaderMaterial_7pruo")
+position = Vector2(640, 362.24)
+scale = Vector2(2.5, 2.83)
+texture = ExtResource("6_5a7mr")
+
+[node name="ParallaxLayer6" type="ParallaxLayer" parent="."]
+z_index = 2
+position = Vector2(0, -104)
+motion_scale = Vector2(0.35, 1)
+motion_mirroring = Vector2(1280, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer6"]
+material = SubResource("ShaderMaterial_7pruo")
+position = Vector2(640, 362.24)
+scale = Vector2(2.5, 2.83)
+texture = ExtResource("7_63c0m")
+
+[node name="ParallaxLayer7" type="ParallaxLayer" parent="."]
+z_index = 2
+position = Vector2(0, -104)
+motion_scale = Vector2(0.4, 1)
+motion_mirroring = Vector2(1280, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer7"]
+material = SubResource("ShaderMaterial_7pruo")
+position = Vector2(640, 362.24)
+scale = Vector2(2.5, 2.83)
+texture = ExtResource("8_4oxc2")
+
+[node name="ParallaxLayer8" type="ParallaxLayer" parent="."]
+z_index = 2
+position = Vector2(0, -104)
+motion_scale = Vector2(0.45, 1)
+motion_mirroring = Vector2(1280, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer8"]
+material = SubResource("ShaderMaterial_7pruo")
+position = Vector2(640, 362.24)
+scale = Vector2(2.5, 2.83)
+texture = ExtResource("9_xeww7")
+
+[node name="ParallaxLayer9" type="ParallaxLayer" parent="."]
+z_index = 2
+position = Vector2(0, -104)
+motion_scale = Vector2(0.5, 1)
+motion_mirroring = Vector2(1280, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer9"]
+material = SubResource("ShaderMaterial_7pruo")
+position = Vector2(640, 362.24)
+scale = Vector2(2.5, 2.83)
+texture = ExtResource("10_6rsk2")
+
+[node name="ParallaxLayer10" type="ParallaxLayer" parent="."]
+z_index = 2
+position = Vector2(0, -104)
+motion_scale = Vector2(0.55, 1)
+motion_mirroring = Vector2(1280, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer10"]
+material = SubResource("ShaderMaterial_7pruo")
+position = Vector2(640, 362.24)
+scale = Vector2(2.5, 2.83)
+texture = ExtResource("11_i0lka")
+
+[node name="ParallaxLayer11" type="ParallaxLayer" parent="."]
+z_index = 2
+position = Vector2(0, -104)
+motion_scale = Vector2(0.6, 1)
+motion_mirroring = Vector2(1280, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer11"]
+material = SubResource("ShaderMaterial_7pruo")
+position = Vector2(640, 362.24)
+scale = Vector2(2.5, 2.83)
+texture = ExtResource("12_kamko")
+
+[node name="ParallaxLayer12" type="ParallaxLayer" parent="."]
+z_index = 2
+position = Vector2(0, -104)
+motion_scale = Vector2(0.65, 1)
+motion_mirroring = Vector2(1280, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer12"]
+material = SubResource("ShaderMaterial_7pruo")
+position = Vector2(640, 362.24)
+scale = Vector2(2.5, 2.83)
+texture = ExtResource("13_qki3m")
+
+[node name="ParallaxLayer13" type="ParallaxLayer" parent="."]
+z_index = 2
+position = Vector2(0, -104)
+motion_scale = Vector2(0.7, 1)
+motion_mirroring = Vector2(1280, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer13"]
+material = SubResource("ShaderMaterial_7pruo")
+position = Vector2(640, 362.24)
+scale = Vector2(2.5, 2.83)
+texture = ExtResource("14_ciekl")
+
+[node name="ParallaxLayer14" type="ParallaxLayer" parent="."]
+z_index = 2
+position = Vector2(0, -104)
+motion_scale = Vector2(0.75, 1)
+motion_mirroring = Vector2(1280, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer14"]
+material = SubResource("ShaderMaterial_7pruo")
+position = Vector2(640, 362.24)
+scale = Vector2(2.5, 2.83)
+texture = ExtResource("15_201n1")
+
+[node name="ParallaxLayer15" type="ParallaxLayer" parent="."]
+z_index = 2
+position = Vector2(0, -104)
+motion_scale = Vector2(0.8, 1)
+motion_mirroring = Vector2(1280, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer15"]
+material = SubResource("ShaderMaterial_7pruo")
+position = Vector2(640, 362.24)
+scale = Vector2(2.5, 2.83)
+texture = ExtResource("16_vu2xg")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

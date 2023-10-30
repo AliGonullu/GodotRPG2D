@@ -1,0 +1,76 @@
+[gd_scene load_steps=6 format=3 uid="uid://8v3853qv4gs6"]
+
+[ext_resource type="PackedScene" uid="uid://dvgpaqeiq6i78" path="res://Scenes/Tile.tscn" id="1_3884b"]
+[ext_resource type="Script" path="res://Scripts/Inventory.gd" id="1_wnqye"]
+[ext_resource type="Texture2D" uid="uid://6qhski3f74uq" path="res://Sprites/Icons/Coin.png" id="3_b2wmb"]
+[ext_resource type="FontFile" uid="uid://djf10bn7tk2u4" path="res://Fonts/JollyLodger-Regular.ttf" id="4_1w4s3"]
+
+[sub_resource type="FontVariation" id="FontVariation_p7p7t"]
+base_font = ExtResource("4_1w4s3")
+spacing_glyph = 3
+
+[node name="Inventory" type="Node2D"]
+light_mask = 2
+visibility_layer = 2
+z_index = 10
+script = ExtResource("1_wnqye")
+
+[node name="Tiles" type="Node2D" parent="."]
+
+[node name="Tile" parent="Tiles" instance=ExtResource("1_3884b")]
+position = Vector2(-72, -72)
+
+[node name="Tile2" parent="Tiles" instance=ExtResource("1_3884b")]
+position = Vector2(0, -72)
+
+[node name="Tile3" parent="Tiles" instance=ExtResource("1_3884b")]
+position = Vector2(72, -72)
+
+[node name="Tile4" parent="Tiles" instance=ExtResource("1_3884b")]
+position = Vector2(-72, 0)
+
+[node name="Tile5" parent="Tiles" instance=ExtResource("1_3884b")]
+
+[node name="Tile6" parent="Tiles" instance=ExtResource("1_3884b")]
+position = Vector2(72, 0)
+
+[node name="Tile7" parent="Tiles" instance=ExtResource("1_3884b")]
+position = Vector2(-72, 72)
+
+[node name="Tile8" parent="Tiles" instance=ExtResource("1_3884b")]
+position = Vector2(0, 72)
+
+[node name="Tile9" parent="Tiles" instance=ExtResource("1_3884b")]
+position = Vector2(72, 72)
+
+[node name="CoinCount" type="Node2D" parent="."]
+position = Vector2(0, 144)
+
+[node name="ColorRect" type="ColorRect" parent="CoinCount"]
+offset_left = -79.5556
+offset_top = -23.5556
+offset_right = 87.4444
+offset_bottom = 23.4444
+color = Color(0, 0, 0, 0.588235)
+
+[node name="Sprite2D" type="Sprite2D" parent="CoinCount"]
+position = Vector2(-56, 0)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_b2wmb")
+
+[node name="Label" type="Label" parent="CoinCount"]
+offset_left = -25.0
+offset_top = -24.0
+offset_right = 87.0
+offset_bottom = 24.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 8
+theme_override_fonts/font = SubResource("FontVariation_p7p7t")
+theme_override_font_sizes/font_size = 28
+text = "10"
+vertical_alignment = 1

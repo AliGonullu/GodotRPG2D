@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://crvhpq4ll6vsc"]
+
+[ext_resource type="Script" path="res://Scripts/GoodCard.gd" id="1_m0ts8"]
+[ext_resource type="Texture2D" uid="uid://7y3y5jdm7x0p" path="res://Sprites/UI/BlackScreen.png" id="2_yov1j"]
+[ext_resource type="Texture2D" uid="uid://bchfvghqb2rxe" path="res://Sprites/Icons/Bone.png" id="3_h8ory"]
+[ext_resource type="FontFile" uid="uid://djf10bn7tk2u4" path="res://Fonts/JollyLodger-Regular.ttf" id="4_mivg6"]
+
+[sub_resource type="FontVariation" id="FontVariation_2bhor"]
+base_font = ExtResource("4_mivg6")
+spacing_glyph = 3
+
+[node name="GoodCard" type="Node2D"]
+script = ExtResource("1_m0ts8")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(-7.77839, 23.9638)
+rotation = 1.5708
+scale = Vector2(4.21674, 3.99859)
+texture = ExtResource("2_yov1j")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(-8.00001, -44)
+scale = Vector2(5, 4.75)
+texture = ExtResource("3_h8ory")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -88.0
+offset_top = 56.0
+offset_right = 112.0
+offset_bottom = 196.0
+scale = Vector2(0.8, 0.8)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 6
+theme_override_constants/outline_size = 8
+theme_override_constants/shadow_outline_size = 8
+theme_override_constants/line_spacing = 5
+theme_override_fonts/font = SubResource("FontVariation_2bhor")
+theme_override_font_sizes/font_size = 36
+text = "No Feature"
+autowrap_mode = 2

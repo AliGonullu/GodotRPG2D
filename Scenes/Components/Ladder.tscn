@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://dckdbh7ko4kp4"]
+
+[ext_resource type="Script" path="res://Scripts/Ladder.gd" id="1_uprtj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k2swq"]
+size = Vector2(70, 281)
+
+[node name="Ladder" type="Node2D"]
+script = ExtResource("1_uprtj")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -35.0
+offset_top = -140.0
+offset_right = 35.0
+offset_bottom = 140.0
+
+[node name="LaderArea" type="Area2D" parent="."]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LaderArea"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_k2swq")
+
+[connection signal="body_entered" from="LaderArea" to="." method="_on_lader_area_body_entered"]
+[connection signal="body_exited" from="LaderArea" to="." method="_on_lader_area_body_exited"]
